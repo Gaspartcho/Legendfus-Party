@@ -1,1 +1,1 @@
-/Legendfus Party
+#Legendfus Party
