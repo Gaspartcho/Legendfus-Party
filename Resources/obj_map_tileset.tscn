@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Art/Visual/empty_cell.png" type="Texture" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="EmptyCell" type="Sprite" parent="."]
+position = Vector2( 583, 403 )
+texture = ExtResource( 1 )
