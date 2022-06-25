@@ -5,7 +5,7 @@ export(PackedScene) var player_file
 
 
 var player_counter = 0
-var player_array
+var player_array : Array
 
 
 func change_player(player):
@@ -33,7 +33,7 @@ func _ready():
 
 
 func _on_Map_move(pos):
-	player_array[player_counter].position = pos
+	player_array[player_counter].move(pos)
 	Global.players_pos[player_counter] = $Map/Cells.world_to_map(pos)
 	player_counter = (player_counter + 1) % nb_players
 	change_player(player_counter)

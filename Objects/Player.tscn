@@ -16,3 +16,8 @@ script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
+
+[node name="Moving_Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Moving_Timer" to="." method="_on_Moving_Timer_timeout"]
