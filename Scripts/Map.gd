@@ -40,14 +40,27 @@ func show_map(main_array):
 	return
 
 
+func display_pos(move_posibilities, ref):
+	$Possible.clear()
+	reach_cells.resize(0)
+	for i in move_posibilities:
+		var this_pos = i + ref
+		reach_cells.append(this_pos)
+		$Possible.set_cell(this_pos.x, this_pos.y, 2)
+	return
+
+
+
 # Liste des indices de la tileSet qui sont valides (on peut marcher ou attaquer dessus)
 var valid_cells = [0]
+# Liste des positions sur léquelles le perso peut effecturer ses actions (en fonctions de ses capacités à lui)
+var reach_cells = PoolVector2Array()
 
 func is_cell_valid(pos):
 	# Vérifie si la cellule de la tilemap est bien valide (le perso peut potentiellement bouger ou attaquer dessus) (en gros, la cellule n'est pas vide ou ce n'est pas un obstacle)
 	# L'argument "pos" est ici des coordonnées de la titlemap; forme de variable Vector2
-
-	return ($Cells.get_cell(pos.x, pos.y) in valid_cells) and !(pos in Global.players_pos)
+	var check = ($Cells.get_cell(pos.x, pos.y) in valid_cells) and !(pos in Global.players_pos) and (pos in reach_cells)
+	return check
 
 
 func select_cell(pos):

@@ -5,6 +5,12 @@ export(PackedScene) var player_file
 
 
 var player_counter = 0
+var player_array
+
+
+func change_player(player):
+	$Map.display_pos(player_array[player].move_posibilities, Global.players_pos[player])
+
 
 
 # Called when the node enters the scene tree for the first time.
@@ -21,9 +27,13 @@ func _ready():
 		add_child(n_player)
 		Global.players_pos.append($Map/Cells.world_to_map(n_player.position))
 		n_player.add_to_group("Players")
+	
+	player_array = get_tree().get_nodes_in_group("Players")
+	change_player(0)
 
 
 func _on_Map_move(pos):
-	get_tree().get_nodes_in_group("Players")[player_counter].position = pos
+	player_array[player_counter].position = pos
 	Global.players_pos[player_counter] = $Map/Cells.world_to_map(pos)
 	player_counter = (player_counter + 1) % nb_players
+	change_player(player_counter)

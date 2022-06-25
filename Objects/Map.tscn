@@ -13,6 +13,12 @@ tile_set = ExtResource( 2 )
 cell_size = Vector2( 128, 64 )
 format = 1
 
+[node name="Possible" type="TileMap" parent="."]
+mode = 1
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 128, 64 )
+format = 1
+
 [node name="Selection" type="TileMap" parent="."]
 mode = 1
 tile_set = ExtResource( 3 )
