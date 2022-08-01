@@ -10,6 +10,7 @@ extends Node
 
 var map_array
 var players_pos = []
+var camera_offset
 
 
 #endregions

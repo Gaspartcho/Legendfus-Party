@@ -128,7 +128,7 @@ func _input(event):
 		# Détecte si la souris à changée de position
 		if event is InputEventMouseMotion:
 			# Sélectionne la case sur laquelle la souris est 
-			var pos = event.position - OS.window_size / 2
+			var pos = event.position + Global.camera_offset - OS.window_size / 2
 			if old_mouse_pos.distance_squared_to(pos) > 10:
 				var pos_m = $Selection.world_to_map(pos)
 				select_cell(pos_m)
