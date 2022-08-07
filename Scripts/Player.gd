@@ -4,9 +4,7 @@ export var player_ID = 0
 export var active = true
 export var move_points = 2
 export var move_speed = 400
-
-
-var move_posibilities : PoolVector2Array
+export var move_posibilities : PoolVector2Array
 
 func get_normal_pos (length = 1):
 	var all_pos = PoolVector2Array()
