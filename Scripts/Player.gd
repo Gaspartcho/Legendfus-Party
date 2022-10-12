@@ -11,8 +11,7 @@ var destination : Vector2
 var velocity : Vector2
 
 
-func get_normal_pos (length : int = 1) -> PoolVector2Array:
-	# determines a range of positions the player can move to in "lenght" jumps
+func get_normal_pos (length : int = 1) -> PoolVector2Array: # determines a range of positions the player can move to in "lenght" jumps
 	var all_pos = PoolVector2Array()
 	for i in range (2 * length + 1):
 		var x_pos = i - length
@@ -28,7 +27,6 @@ func move (pos:Vector2, spd: int = move_speed) -> void:
 	velocity = position.direction_to(destination) * spd
 	$Moving_Timer.start(position.distance_to(pos) / spd)
 	return
-
 
 func _on_Moving_Timer_timeout () -> void:
 	position = destination

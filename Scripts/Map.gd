@@ -8,6 +8,7 @@ signal move (pos)
 export var array_size = Vector2(10, 10)
 export var active = true # si le script est actif
 
+var master_node
 
 # Créée une variable old_pos en dehors de la fonction pour la garder sur plusieurs frames (toute variable définie dans une fonction seras suprimé à la fin de la fonction)
 var old_pos = Vector2()
@@ -38,8 +39,7 @@ func show_map (main_array:Array) -> void:
 
 	for i in range(array_size.x):
 		for j in range(array_size.y):
-			var pos = Vector2(i, j) - array_size / 2
-			$Cells.set_cell(pos.x, pos.y, main_array[j][i])
+			$Cells.set_cell(i, j, main_array[j][i])
 	return
 
 
@@ -70,10 +70,9 @@ func select_cell (pos:Vector2):
 		
 
 func _ready (): # Called when the node enters the scene tree for the first time.
+	master_node = get_node("..")
 	var map_array = generate_empty_array(array_size)
-	Global.map_array = map_array
 	show_map(map_array)
-
 
 
 # pas sur de vouloir mettre les inputs dans l'objet "carte"... a voir si il y a un meilleur endroit...
