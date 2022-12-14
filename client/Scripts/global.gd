@@ -14,7 +14,7 @@ var server_info = {"name":"", "ip":[], "port":0, "max_players":10, "nb_players":
 
 
 var player_info = {}
-var my_info = {"name":"", "ip":[]}
+var my_info = {"name":"", "ip":[], "character":"default"}
 
 
 #endregions

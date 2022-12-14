@@ -8,31 +8,32 @@ script = ExtResource( 1 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Back_button" type="Button" parent="CanvasLayer"]
-margin_left = 106.0
-margin_top = 375.0
-margin_right = 148.0
-margin_bottom = 395.0
+margin_left = 19.0
+margin_top = 568.0
+margin_right = 61.0
+margin_bottom = 588.0
 text = "Back"
 
 [node name="Room_ip_text" type="Label" parent="CanvasLayer"]
-margin_left = 2.0
-margin_top = 37.0
-margin_right = 56.0
-margin_bottom = 51.0
-text = "Room Ip"
+margin_left = 15.0
+margin_top = 9.0
+margin_right = 69.0
+margin_bottom = 23.0
+text = "Room Ip: 0.0.0.0"
 
 [node name="Nb_players_text" type="Label" parent="CanvasLayer"]
-margin_left = 26.0
-margin_top = 114.0
-margin_right = 133.0
-margin_bottom = 128.0
-text = "Number of users"
+margin_left = 15.0
+margin_top = 47.0
+margin_right = 122.0
+margin_bottom = 61.0
+text = "Number of users: 0"
 
 [node name="Start_button" type="Button" parent="CanvasLayer"]
-margin_left = 426.0
-margin_top = 245.0
-margin_right = 509.0
-margin_bottom = 265.0
+anchor_right = 1.0
+margin_left = 23.0
+margin_top = 527.0
+margin_right = -903.0
+margin_bottom = 547.0
 text = "Start Game"
 
 [connection signal="pressed" from="CanvasLayer/Back_button" to="." method="_on_Back_button_pressed"]

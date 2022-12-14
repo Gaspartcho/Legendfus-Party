@@ -24,6 +24,11 @@ func _ready() -> void:
 	return
 
 
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta) -> void:
+	pass
+
+
 remote func _player_connected() -> void:
 	var id = get_tree().get_rpc_sender_id()
 	Global.server_info["nb_players"] += 1
@@ -57,10 +62,6 @@ puppet func register_self(info:Dictionary) -> void:
 	$CanvasLayer/Nb_players_text.text = "Number of players: " + str(Global.server_info["nb_players"])
 	return
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta) -> void:
-	pass
-
 
 func _on_Back_button_pressed() -> void:
 	emit_signal("change_scene", "Main_menu")
@@ -72,6 +73,6 @@ puppetsync func launch_game() -> void:
 	return
 
 
-func _on_Start_button_pressed() -> void:
-	rpc("launch_game")
-	return
+#func _on_Start_button_pressed() -> void:
+#	rpc("launch_game")
+#	return

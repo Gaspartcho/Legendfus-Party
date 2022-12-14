@@ -5,7 +5,7 @@ var current_scene:String
 var _unused
 
 
-func _ready():
+func _ready() -> void:
 	
 	current_scene = "Main_menu"
 	
@@ -13,9 +13,11 @@ func _ready():
 
 	_unused = get_tree().connect("connection_failed", self, "_connected_fail")
 	_unused = get_tree().connect("server_disconnected", self, "_connected_fail")
+
 	return
 
-func _process(_delta):
+func _process(_delta) -> void:
+
 	return
 
 func change_scene(scene:String) -> void:
@@ -29,8 +31,11 @@ func change_scene(scene:String) -> void:
 	add_child(next_level)
 	next_level.connect("change_scene", self, "change_scene")
 	current_scene = scene
+
 	return
 
-func _connected_fail():
+func _connected_fail() -> void:
 	change_scene("Main_menu")
 	print("Failed to connect / connection lost")
+
+	return

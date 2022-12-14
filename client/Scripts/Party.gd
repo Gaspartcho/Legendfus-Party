@@ -31,6 +31,8 @@ func pre_configure_game():
 	# Tell the server we're done
 	rpc_id(1, "done_preconfiguring")
 
+	return
+
 
 mastersync func done_preconfiguring():
 	var who = get_tree().get_rpc_sender_id()
@@ -42,16 +44,23 @@ mastersync func done_preconfiguring():
 
 	if players_done.size() == Global.server_info["nb_players"]:
 		rpc("post_configure_game")
+	
+	return
 
 
 puppetsync func post_configure_game():
 	get_tree().paused = false
+	print("All the players are ready, game is starting")
+
+	return
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pre_configure_game()
+
+	return
 
 
 

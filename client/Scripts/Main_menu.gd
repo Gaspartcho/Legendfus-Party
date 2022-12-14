@@ -14,6 +14,7 @@ func _ready():
 	$CanvasLayer/Player_name_input.text = Global.my_info["name"]
 
 	print(IP.get_local_addresses())
+
 	return
 
 
@@ -22,15 +23,19 @@ func _process(_delta):
 	pass
 
 
-func _on_Quit_button_pressed():
+func _on_Quit_button_pressed() -> void:
+	# Shuts down the game
+
 	get_tree().quit()
+
+	return
 
 
 func get_local_ip():
 	return IP.get_local_addresses()[11]
 
 
-func _on_Host_button_pressed():
+func _on_Host_button_pressed() -> void:
 	var player_name = $CanvasLayer/Player_name_input.text
 	if player_name == "":
 		print("Invalid name!")
@@ -49,10 +54,11 @@ func _on_Host_button_pressed():
 
 	print("server created")
 	emit_signal("change_scene", "Lobby")
+
 	return
 
 
-func _on_Connect_button_pressed():
+func _on_Connect_button_pressed() -> void:
 	var player_name = $CanvasLayer/Player_name_input.text
 	if player_name == "":
 		print("Invalid name!")
@@ -70,9 +76,15 @@ func _on_Connect_button_pressed():
 	var peer = NetworkedMultiplayerENet.new()
 	peer.create_client(server_ip, Global.server_port)
 	get_tree().network_peer = peer
+
 	return
 
-func _connected_ok():
+
+func _connected_ok() -> void:
 	print("All went acordingly!")
 	emit_signal("change_scene", "Lobby")
+
 	return
+
+func _on_Button_pressed() -> void:
+	pass
