@@ -11,7 +11,16 @@ config_version=4
 [application]
 
 config/name="Legendfus Party - Server"
+run/main_scene="res://Scenes/Game_Main.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Global="*res://Scripts/global.gd"
+
+[global]
+
+global=false
 
 [gui]
 
