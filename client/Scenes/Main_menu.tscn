@@ -9,10 +9,10 @@ script = ExtResource( 1 )
 [node name="Main_canvas" type="CanvasLayer" parent="."]
 
 [node name="Create_game_button" type="Button" parent="Main_canvas"]
-margin_left = 231.0
-margin_top = 393.0
-margin_right = 326.0
-margin_bottom = 413.0
+margin_left = 224.0
+margin_top = 570.0
+margin_right = 319.0
+margin_bottom = 590.0
 text = "Create Game"
 
 [node name="Join_game_button" type="Button" parent="Main_canvas"]
