@@ -3,6 +3,6 @@ extends Node
 
 #region variables
 
-const version = "Prototype 0.1"
+const game_version: String = "LegendFus Party: Prototype 0.1 - Server"
 
 #endregion
