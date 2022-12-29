@@ -1,6 +1,7 @@
 # Legendfus Party
 
 Curent Version: Prototype 0.1
+
 Status: In progress...
 
 Known Bugs:
