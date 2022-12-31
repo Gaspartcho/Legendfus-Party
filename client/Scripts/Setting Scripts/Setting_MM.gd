@@ -25,7 +25,10 @@ var _unused
 func _ready() -> void:
 	hide()
 
+
 	return
+
+
 
 # Exits the setting screen
 func _on_Return_button_pressed() -> void:

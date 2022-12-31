@@ -61,7 +61,7 @@ text = "LegendFus Party"
 [node name="Canvas_layer_100" type="CanvasLayer" parent="."]
 layer = 100
 __meta__ = {
-"_editor_description_": "The layer most in front of the scece (used for the setting menu)"
+"_editor_description_": "Canvas layer used for the setting menu (pls stay like this for all the scenes)"
 }
 
 [node name="Setting_menu" type="Control" parent="Canvas_layer_100"]

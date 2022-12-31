@@ -11,8 +11,44 @@ current = true
 
 [node name="Main_canvas" type="CanvasLayer" parent="."]
 
-[node name="Game_version_label" type="Label" parent="Main_canvas"]
+[node name="Canvas_layer_128" type="CanvasLayer" parent="."]
+layer = 128
+__meta__ = {
+"_editor_description_": "Layer with all the debug informations of the game"
+}
+
+[node name="Game_version_label" type="Label" parent="Canvas_layer_128"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_top = -14.0
+margin_right = 90.0
+text = "Game Version"
+
+[node name="Debug_menu" type="Control" parent="Canvas_layer_128"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Offline_mode_label" type="Label" parent="Canvas_layer_128/Debug_menu"]
+margin_right = 91.0
+margin_bottom = 14.0
+text = "Offline Mode: False"
+
+[node name="Connected_label" type="Label" parent="Canvas_layer_128/Debug_menu"]
+margin_top = 42.0
+margin_right = 76.0
+margin_bottom = 56.0
+rect_pivot_offset = Vector2( -226, 62 )
+text = "Connected: False"
+
+[node name="Sever_adress_label" type="Label" parent="Canvas_layer_128/Debug_menu"]
+margin_top = 56.0
 margin_right = 40.0
+margin_bottom = 70.0
+rect_pivot_offset = Vector2( -226, 62 )
+text = "Server Adress: None"
+
+[node name="Server_port_label" type="Label" parent="Canvas_layer_128/Debug_menu"]
+margin_top = 70.0
+margin_right = 40.0
+margin_bottom = 84.0
+text = "Server Port: None"

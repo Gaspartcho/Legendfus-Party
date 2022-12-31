@@ -23,10 +23,6 @@ var _unused
 
 #endregion
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	$Popup.popup()
-	return
 
 
 func _on_Quit_button_pressed() -> void:
