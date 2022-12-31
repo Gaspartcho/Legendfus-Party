@@ -3,7 +3,6 @@ extends Node2D
 export var player_ID: int = 0
 export var active: bool = true
 export var move_points: int = 2
-export var move_speed: int = 500
 export var move_posibilities: PoolVector2Array
 
 
