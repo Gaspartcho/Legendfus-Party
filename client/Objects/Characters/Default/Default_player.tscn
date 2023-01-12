@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scripts/Objects Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Art/Visual/default_player_sprite.png" type="Texture" id=2]
+[ext_resource path="res://Objects/Characters/Default/Attack_ressource.gd" type="Script" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -13,11 +14,7 @@ animations = [ {
 
 [node name="Player" type="Node2D"]
 script = ExtResource( 1 )
+attack_1 = ExtResource( 3 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-
-[node name="Moving_Timer" type="Timer" parent="."]
-one_shot = true
-
-[connection signal="timeout" from="Moving_Timer" to="." method="_on_Moving_Timer_timeout"]

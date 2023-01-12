@@ -4,6 +4,8 @@
 
 [node name="Game_Main" type="Node"]
 script = ExtResource( 2 )
+offline_mode = true
+debug_mode = true
 
 [node name="Main_camera" type="Camera2D" parent="."]
 anchor_mode = 0
