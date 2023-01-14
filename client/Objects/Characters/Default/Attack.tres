@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Objects/Characters/Default/Attack.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+name = ""
+cost = 0
+is_capacity = false
+is_global = false
+real_damage = 0
+shield_damage = 0
+movement_boost = 0
+poison_duration = 0
+attack_range = PoolVector2Array(  )
+nb_amunitions = 1
