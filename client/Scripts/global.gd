@@ -9,4 +9,12 @@ extends Node
 
 const game_version: String = "LegendFus Party: Prototype 0.1 - Client"
 
+var offline_mode: bool = false
+
+var players: Dictionary = {}
+var sbires: Dictionary = {}
+
+var personal_id: int = 1
+var username: String = "CloneKnight"
+
 #endregion

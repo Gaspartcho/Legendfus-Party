@@ -1,70 +1,59 @@
 extends Node
 
+
 signal change_scene (scene)
 
 
-export var default_game: bool = true
+#region Variables
+
+#exports variables
+export var camera_speed: float = 1
 
 
-var players_pos
+#scene objects
+onready var obj_Setting_menu: Control = $Canvas_layer_100/Setting_menu
+
+onready var obj_map: Node2D = $Main_canvas/Map
+onready var obj_player_buffer: Node = $Main_canvas/Players
 
 
-var players_done = []
+onready var obj_game_main = get_node("/root/Game_Main")
 
 
-func pre_configure_game():
-	get_tree().paused = true
-	var selfPeerID = get_tree().get_network_unique_id()
+#others
+const p_spawn_points: Dictionary = {"red": [Vector2(0, 0)], "blue": [], "green": [], "yellow": []}
+const s_spawn_points: Dictionary = {"red": [Vector2(0, 0)], "blue": [], "green": [], "yellow": []}
+var p_spawn_points_counter: Dictionary = {"red": 0, "blue": 0, "green": 0, "yellow": 0}
+var s_spawn_points_counter: Dictionary = {"red": 0, "blue": 0, "green": 0, "yellow": 0}
 
-	# Load my player
-	var my_player = Global.get_character("default")
-	my_player.set_name(str(selfPeerID))
-	$Players.add_child(my_player)
-
-	# Load other players
-	for p in Global.player_info:
-		var player = Global.get_character("default")
-		player.set_name(str(p))
-		$Players.add_child(player)
+var teams: Dictionary = {"red": [], "blue": [], "green": [], "yellow": []}
 
 
-	# Tell the server we're done
-	rpc_id(1, "done_preconfiguring")
+#unused variable
+var _unused
 
+#endregion
+
+
+func _ready() -> void:
 	return
 
 
-mastersync func done_preconfiguring():
-	var who = get_tree().get_rpc_sender_id()
+func prepare_game() -> void:
+	var n_character: Node2D
+	var player_info = Global.players
 
-	assert(who in Global.player_info or who == 1) # Exists
-	assert(not who in players_done) # Was not added yet
+	if not player_info:
+		player_info = {1: {"username": Global.username, "character": "Default", "team":"Red"}}
 
-	players_done.append(who)
+	for i in player_info:
+		teams[player_info[i]["team"]].append(i)
+		n_character = load("res://Objects/Characters/" + player_info[i]["character"] + ".tscn").instance()
+		n_character.set_info(player_info[i])
+		n_character.name = str(i)
+		n_character.position = p_spawn_points[n_character.team][p_spawn_points_counter[n_character.team]]
+		s_spawn_points_counter[n_character.team] += 1
 
-	if players_done.size() == Global.server_info["nb_players"]:
-		rpc("post_configure_game")
-	
-	return
-
-
-puppetsync func post_configure_game():
-	get_tree().paused = false
-	print("All the players are ready, game is starting")
-
-	return
-
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pre_configure_game()
+		obj_player_buffer.add_child(n_character)
 
 	return
-
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

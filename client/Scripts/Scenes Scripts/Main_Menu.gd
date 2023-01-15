@@ -24,6 +24,12 @@ var _unused
 #endregion
 
 
+func _ready() -> void:
+	Global.players = {}
+	Global.sbires = {}
+
+	return
+
 
 func _on_Quit_button_pressed() -> void:
 	# Shuts down the game

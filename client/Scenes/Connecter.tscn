@@ -38,4 +38,12 @@ margin_right = 403.0
 margin_bottom = 138.0
 text = "Please connect to a server in order to play the game"
 
+[node name="Offline_button" type="Button" parent="CanvasLayer"]
+margin_left = 32.0
+margin_top = 554.0
+margin_right = 117.0
+margin_bottom = 574.0
+text = "Play Offline"
+
 [connection signal="pressed" from="CanvasLayer/connect_server_button" to="." method="_on_connect_server_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Offline_button" to="." method="_on_Offline_button_pressed"]

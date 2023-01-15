@@ -42,6 +42,16 @@ func _on_connect_server_button_pressed() -> void:
 
 	return
 
+
+func _on_Offline_button_pressed() -> void:
+	Global.offline_mode = true
+	Global.personal_id = 1
+	get_tree().network_peer = null
+	emit_signal("change_scene", "Main_Menu")
+
+	return
+
+
 # connections issues when working on the same computer
 func connect_server(adress: String = default_server_adress, port: int = server_port) -> void:
 	var peer = NetworkedMultiplayerENet.new()
@@ -66,6 +76,8 @@ func _on_connection_failed() -> void:
 
 func _on_connected_to_server() -> void:
 	print("Connected Success!")
+	Global.personal_id = get_tree().get_network_unique_id()
+	Global.offline_mode = false
 	emit_signal("change_scene", "Main_Menu")
 
 	return
