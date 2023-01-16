@@ -1,14 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Scripts/Scenes Scripts/Party.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Map.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Art/Visual/pointer_sprite.png" type="Texture" id=3]
 
 [node name="Party" type="Node"]
 script = ExtResource( 1 )
+camera_speed = 500.0
+camera_friction = 1.2
 
 [node name="Main_camera" type="Camera2D" parent="."]
-anchor_mode = 0
 current = true
 
 [node name="Map" parent="." instance=ExtResource( 2 )]
@@ -21,11 +21,45 @@ __meta__ = {
 "_editor_description_": "Canvas layer used  UI elements in this scene"
 }
 
-[node name="Cursor" type="Node2D" parent="Canvas_layer_5"]
-position = Vector2( 72, 86 )
+[node name="Minimap" type="Control" parent="Canvas_layer_5"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -430.0
+margin_top = -294.0
 
-[node name="Sprite" type="Sprite" parent="Canvas_layer_5/Cursor"]
-texture = ExtResource( 3 )
+[node name="ColorRect" type="ColorRect" parent="Canvas_layer_5/Minimap"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="Canvas_layer_5/Minimap"]
+margin_left = 124.0
+margin_top = 76.0
+margin_right = 180.0
+margin_bottom = 90.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Minimap"
+
+[node name="Actions_bar" type="Control" parent="Canvas_layer_5"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 248.0
+margin_top = -213.0
+margin_right = -429.0
+
+[node name="ColorRect" type="ColorRect" parent="Canvas_layer_5/Actions_bar"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.403922, 0.403922, 0.403922, 1 )
+
+[node name="Label" type="Label" parent="Canvas_layer_5/Actions_bar"]
+margin_left = 410.0
+margin_top = 98.0
+margin_right = 482.0
+margin_bottom = 112.0
+text = "Actions bar"
 
 [node name="Canvas_layer_100" type="CanvasLayer" parent="."]
 layer = 100

@@ -15,6 +15,8 @@ onready var obj_offline_mode_label: Label = $Canvas_layer_10/Debug_menu/Offline_
 onready var obj_connected_label: Label = $Canvas_layer_10/Debug_menu/Connected_label
 onready var obj_sever_adress_label: Label = $Canvas_layer_10/Debug_menu/Sever_adress_label
 onready var obj_server_port_label: Label = $Canvas_layer_10/Debug_menu/Server_port_label
+onready var obj_mouse_pos_label: Label = $Canvas_layer_10/Debug_menu/Mouse_pos_label
+onready var obj_fps_label: Label = $Canvas_layer_10/Debug_menu/FPS_label
 
 onready var obj_debug_menu: Control = $Canvas_layer_10/Debug_menu
 
@@ -60,12 +62,21 @@ func _ready() -> void:
 
 
 func _process(_delta) -> void:
+	obj_fps_label.text = "FPS: " + str(Engine.get_frames_per_second())
+
 	if Input.is_action_just_pressed("debug_toggle"):
 		debug_mode = not debug_mode
 		if debug_mode:
 			obj_debug_menu.show()
 		else:
 			obj_debug_menu.hide()
+	
+	return
+
+
+func _input(event) -> void:
+	if event is InputEventMouseMotion:
+		obj_mouse_pos_label.text = "Mouse pos: " + str(event.position)
 
 	return
 
