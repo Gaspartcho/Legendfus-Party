@@ -8,17 +8,23 @@ extends Node2D
 export var character_name: String = "Default"
 export var life: int = 10
 export var shield: int = 5
-export var movement_speed: int = 5
 
-export var attack_1: Resource
-export var attack_2: Resource
-export var attack_3: Resource
-export var attact_4: Resource
-export var attack_u: Resource
+export var movement_dist: int = 5
+export var vision_dist: int = 10
+export var radio_dist: int = 10
+
+export var attack_1: Resource = load("res://Resources/Attack.tres")
+export var attack_2: Resource = load("res://Resources/Attack.tres")
+export var attack_3: Resource = load("res://Resources/Attack.tres")
+export var attact_4: Resource = load("res://Resources/Attack.tres")
+export var attack_u: Resource = load("res://Resources/Attack.tres")
+
+export var movement_speed: float = 3
 
 
 #scene objects
 onready var obj_username_label: Label = $Username_label
+onready var obj_movement_tween: Tween = $Movement_tween
 
 
 #others
@@ -32,9 +38,19 @@ var _unused
 #endregion
 
 
+
 func set_info(data: Dictionary) -> void:
 	obj_username_label.text = data["username"]
 	team = data["team"]
 	
+
+	return
+
+
+func move(targets: PoolVector2Array) -> void:
+	_unused = obj_movement_tween.start()
+	for i in targets:
+		_unused = obj_movement_tween.interpolate_property(self, "position", position, i, position.distance_to(i) / movement_speed)
+		yield(obj_movement_tween, "tween_completed")
 
 	return

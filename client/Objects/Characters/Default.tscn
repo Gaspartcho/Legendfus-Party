@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Objects/Characters/Attack.tres" type="Resource" id=1]
+[ext_resource path="res://Resources/Attack.tres" type="Resource" id=1]
 [ext_resource path="res://Art/Visual/default_player_sprite.png" type="Texture" id=2]
 [ext_resource path="res://Scripts/Objects Scripts/Player.gd" type="Script" id=3]
 
@@ -27,6 +27,7 @@ attack_2 = ExtResource( 1 )
 attack_3 = ExtResource( 1 )
 attact_4 = ExtResource( 1 )
 attack_u = ExtResource( 1 )
+movement_speed = 300.0
 
 [node name="Character_animated_sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
@@ -39,10 +40,12 @@ frames = SubResource( 2 )
 [node name="Attack_sound_player" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Username_label" type="Label" parent="."]
-margin_left = -31.0
-margin_top = -43.0
-margin_right = 35.0
-margin_bottom = -29.0
+margin_left = -33.0
+margin_top = -46.0
+margin_right = 33.0
+margin_bottom = -32.0
 text = "Username"
 align = 1
 valign = 1
+
+[node name="Movement_tween" type="Tween" parent="."]

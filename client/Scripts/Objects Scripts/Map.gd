@@ -30,3 +30,9 @@ func select_cell (pos:Vector2):
 
 	$Selection.set_cell(old_pos, -1)
 	return
+
+func compute_path (start_point, target_point) -> PoolVector2Array:
+	# On assume que les 2 positions de départ sont valides et que le chemin à emprunter existe aussi
+	# A star algorithm used here!
+
+	return null
