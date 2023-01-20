@@ -16,9 +16,12 @@ onready var obj_connected_label: Label = $Canvas_layer_10/Debug_menu/Connected_l
 onready var obj_sever_adress_label: Label = $Canvas_layer_10/Debug_menu/Sever_adress_label
 onready var obj_server_port_label: Label = $Canvas_layer_10/Debug_menu/Server_port_label
 onready var obj_mouse_pos_label: Label = $Canvas_layer_10/Debug_menu/Mouse_pos_label
+onready var obj_mouse_real_pos_label: Label = $Canvas_layer_10/Debug_menu/Mouse_real_pos_label
 onready var obj_fps_label: Label = $Canvas_layer_10/Debug_menu/FPS_label
 
 onready var obj_debug_menu: Control = $Canvas_layer_10/Debug_menu
+
+onready var obj_mouse_helper: Node2D = $Mouse_helper
 
 
 #others
@@ -77,6 +80,7 @@ func _process(_delta) -> void:
 func _input(event) -> void:
 	if event is InputEventMouseMotion:
 		obj_mouse_pos_label.text = "Mouse pos: " + str(event.position)
+		obj_mouse_real_pos_label.text = "Mouse Real Pos: " + str(obj_mouse_helper.get_local_mouse_position().round())
 
 	return
 

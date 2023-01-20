@@ -31,7 +31,7 @@ onready var obj_movement_tween: Tween = $Movement_tween
 onready var attacks: Array = [attack_1, attack_2, attack_3, attact_4, attack_u]
 var team: String = "red"
 var is_alive: bool = true
-
+var is_moving: bool = false
 
 #unused variable
 var _unused
@@ -49,9 +49,12 @@ func set_info(data: Dictionary) -> void:
 
 
 func move(targets: PoolVector2Array) -> void:
+	# Vector2 s on world scale
 	_unused = obj_movement_tween.start()
+	is_moving = true
 	for i in targets:
 		_unused = obj_movement_tween.interpolate_property(self, "position", position, i, position.distance_to(i) / movement_speed)
 		yield(obj_movement_tween, "tween_completed")
-
+	
+	is_moving = false
 	return

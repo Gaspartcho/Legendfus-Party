@@ -23,9 +23,8 @@ var _unused
 func _ready() -> void:
 	map_size = get_map_size()
 
-	print(map_size)
-
 	return
+
 
 func get_map_size() -> Rect2:
 	# On assume que la carte est rectangulaire et qu'il y a au moins une tile sur (0, 0)
@@ -56,6 +55,8 @@ func create_astar_from_tilemap(area: Rect2 = map_size) -> AStar:
 	var n_point_id: int
 	var last_point_id: int
 
+	this_astar.reserve_space((area.size.x - area.position.x) * (area.size.y - area.position.y))
+
 	# First point
 	last_point_id = this_astar.get_available_point_id()
 	cell_weight = get_tile_cost(Vector2(area.position.x, area.position.y))
@@ -70,12 +71,16 @@ func create_astar_from_tilemap(area: Rect2 = map_size) -> AStar:
 		last_point_id = n_point_id
 	
 	for j in range(area.position.y + 1, area.size.y + 1):
-		for i in range(area.position.x, area.size.x + 1):
+		cell_weight = get_tile_cost(Vector2(area.position.x, j))
+		last_point_id = this_astar.get_available_point_id()
+		this_astar.add_point(last_point_id, Vector3(area.position.x, j, 0), cell_weight)
+		this_astar.connect_points(last_point_id, this_astar.get_closest_point(Vector3(area.position.x, j-1, 0)))
+		
+		for i in range(area.position.x + 1, area.size.x + 1):
 			cell_weight = get_tile_cost(Vector2(i, j))
 			n_point_id = this_astar.get_available_point_id()
 			this_astar.add_point(n_point_id, Vector3(i, j, 0), cell_weight)
 			this_astar.connect_points(n_point_id, last_point_id)
-
 			this_astar.connect_points(n_point_id, this_astar.get_closest_point(Vector3(i, j-1, 0)))
 			last_point_id = n_point_id
 
@@ -97,3 +102,9 @@ func get_tile_type(cell: int, _level:int = 0) -> String:
 
 func get_tile_cost(target_pos: Vector2) -> int:
 	return terrians_costs[get_tile_type(obj_map_tilemap.get_cellv(target_pos))]
+
+func transpose_map_to_world_array(data: PoolVector2Array) -> PoolVector2Array:
+	var final_array = PoolVector2Array()
+	for i in data:
+		final_array.push_back(obj_map_tilemap.map_to_world(i))
+	return final_array
