@@ -17,7 +17,7 @@ export var zoom_limits: Dictionary = {"min": 0.25, "max": 4.0}
 onready var vp_size: Vector2 = get_viewport().size
 var camera_momentum: Vector2 = Vector2(0, 0)
 var cam_zoom_offset: float = 1 - 1 / camera_zoom_speed
-var cam_unzoom_offset: float = camera_zoom_speed - 1
+var cam_unzoom_offset: float = 1 - camera_zoom_speed
 
 
 #unused variable
@@ -58,7 +58,7 @@ func _process(delta) -> void:
 		zoom /= camera_zoom_speed
 
 	if Input.is_action_just_released("map_unzoom") and zoom.x < zoom_limits["max"]:
-		position -= (m_pos - vp_size / 2) * cam_unzoom_offset * zoom.x
+		position += (m_pos - vp_size / 2) * cam_unzoom_offset * zoom.x
 		zoom *= camera_zoom_speed
 
 	if Input.is_action_just_pressed("camera_reset"):

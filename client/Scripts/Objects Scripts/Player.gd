@@ -30,6 +30,7 @@ onready var obj_movement_tween: Tween = $Movement_tween
 #others
 onready var attacks: Array = [attack_1, attack_2, attack_3, attact_4, attack_u]
 var team: String = "red"
+var is_alive: bool = true
 
 
 #unused variable

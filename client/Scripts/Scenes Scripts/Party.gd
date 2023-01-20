@@ -23,6 +23,7 @@ var teams: Dictionary = {"red": [], "blue": [], "green": [], "yellow": []}
 
 var personal_player: Node
 
+var pathfinder: AStar
 
 #unused variable
 var _unused
@@ -67,6 +68,8 @@ func prepare_game() -> void:
 	#region setting up the game bar
 
 	personal_player = get_node("Players/" + str(Global.personal_id))
+
+	pathfinder = obj_map.create_astar_from_tilemap()
 
 	#endregion
 
