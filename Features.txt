@@ -1,0 +1,19 @@
+Features to add:
+
+    - In-game console (for chat / commands / debug commands / god mode)
+    - The online part of this (at least the connection)
+
+
+Features to change:
+
+    - Map: squares -> hexagons
+
+
+Working:
+
+
+
+
+Finished:
+
+

@@ -10,6 +10,7 @@ export var terrians_costs: Dictionary = {"plain":1, "swamp":2, "mountain_up":2, 
 
 #scene objects
 onready var obj_map_tilemap: TileMap = $Map_tilemap
+onready var obj_selection_tilemap: TileMap = $Selection_tilemap
 
 
 #others
@@ -108,3 +109,24 @@ func transpose_map_to_world_array(data: PoolVector2Array) -> PoolVector2Array:
 	for i in data:
 		final_array.push_back(obj_map_tilemap.map_to_world(i))
 	return final_array
+
+func transpose_world_to_map_array(data: PoolVector2Array) -> PoolVector2Array:
+	var final_array = PoolVector2Array()
+	for i in data:
+		final_array.push_back(obj_map_tilemap.world_to_map(i))
+	return final_array
+
+
+func draw_selection(liste: PoolVector2Array, id: int, scale_top_map: bool = true) -> void:
+	if not scale_top_map:
+		liste = transpose_world_to_map_array(liste)
+	
+	for i in liste:
+		obj_selection_tilemap.set_cellv(i, id)
+
+	return
+
+func clear_selection() -> void:
+	obj_selection_tilemap.clear()
+	
+	return

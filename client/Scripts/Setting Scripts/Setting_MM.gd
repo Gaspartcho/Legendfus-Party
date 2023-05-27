@@ -34,3 +34,11 @@ func _ready() -> void:
 func _on_Return_button_pressed() -> void:
 	hide()
 	return 
+
+
+func _process(_delta) -> void:
+
+	if Input.is_action_just_pressed("settings_toggle"):
+		visible = not visible
+	
+	return	

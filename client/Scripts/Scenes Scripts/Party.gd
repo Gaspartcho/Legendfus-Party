@@ -30,6 +30,10 @@ var selection: Node
 
 var pathfinder: AStar
 
+
+var is_move_canceled: bool = true
+var last_selected_move: Vector2 = Vector2()
+
 #unused variable
 var _unused
 
@@ -50,6 +54,9 @@ func _process(_delta) -> void:
 	if Input.is_action_just_pressed("camera_reset"):
 		selection = personal_player
 	
+	if  Input.is_action_just_pressed("character_move"):
+		is_move_canceled = false
+
 	if Input.is_action_just_released("character_move"):
 		move_player(int(selection.name), obj_main_camera.get_global_mouse_position())
 
@@ -93,7 +100,29 @@ func prepare_game() -> void:
 	return
 
 
+func ready_player_move(id: int, target_pos: Vector2, scale_to_map: bool = false) -> void:
+	if is_move_canceled:
+		return
+	
+	if not scale_to_map:
+		target_pos = obj_map.obj_map_tilemap.world_to_map(target_pos)
+
+	var target_player = get_player_by_id(id)
+	if target_player.is_moving:
+		return
+	
+	var target_player_pos = obj_map.obj_map_tilemap.world_to_map(target_player.position)
+	var point_start = pathfinder.get_closest_point(Vector3(target_player_pos.x, target_player_pos.y, 0))
+	var point_end = pathfinder.get_closest_point(Vector3(target_pos.x, target_pos.y, 0))
+
+	var path = transpose_vector3_vector2_array(pathfinder.get_point_path(point_start, point_end))
+
+	return
+
 func move_player(id: int, target_pos: Vector2, scale_to_map: bool = false) -> void:
+	if is_move_canceled:
+		return
+
 	# we assume the path is valid and possible and in range
 	if not scale_to_map:
 		target_pos = obj_map.obj_map_tilemap.world_to_map(target_pos)

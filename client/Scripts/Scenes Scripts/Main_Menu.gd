@@ -25,16 +25,16 @@ var _unused
 
 
 func _ready() -> void:
-	Global.players = {}
-	Global.sbires = {}
 
 	return
 
 
 func _on_Quit_button_pressed() -> void:
 	# Shuts down the game
-	get_tree().network_peer.close_connection()
-	get_tree().network_peer = null
+	if not Global.offline_mode:
+		get_tree().network_peer.close_connection()
+		get_tree().network_peer = null
+
 	get_tree().quit()
 
 	return

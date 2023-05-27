@@ -39,7 +39,6 @@ var _unused
 #endregion
 
 
-
 func set_info(data: Dictionary) -> void:
 	obj_username_label.text = data["username"]
 	team = data["team"]
@@ -48,13 +47,12 @@ func set_info(data: Dictionary) -> void:
 	return
 
 
-func move(targets: PoolVector2Array) -> void:
+func move(target: Vector2) -> void:
 	# Vector2 s on world scale
 	_unused = obj_movement_tween.start()
 	is_moving = true
-	for i in targets:
-		_unused = obj_movement_tween.interpolate_property(self, "position", position, i, position.distance_to(i) / movement_speed)
-		yield(obj_movement_tween, "tween_completed")
-	
+	_unused = obj_movement_tween.interpolate_property(self, "position", position, target, position.distance_to(target) / movement_speed)
+
+func end_move() -> void:
 	is_moving = false
 	return
