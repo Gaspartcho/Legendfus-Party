@@ -30,6 +30,7 @@ attack_u = ExtResource( 1 )
 movement_speed = 300.0
 
 [node name="Character_animated_sprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 1 )
 
 [node name="Character_sound_player" type="AudioStreamPlayer2D" parent="."]
@@ -41,9 +42,9 @@ frames = SubResource( 2 )
 
 [node name="Username_label" type="Label" parent="."]
 margin_left = -33.0
-margin_top = -46.0
+margin_top = -30.0
 margin_right = 33.0
-margin_bottom = -32.0
+margin_bottom = -16.0
 text = "Username"
 align = 1
 valign = 1

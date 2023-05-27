@@ -53,11 +53,11 @@ func _process(delta) -> void:
 
 	position += camera_momentum * zoom * delta
 	
-	if Input.is_action_just_released("map_zoom") and zoom.x > zoom_limits["min"]:
+	if Input.is_action_just_released("map_zoom") and zoom.x > zoom_limits["min"] and m_pos.y < 786:
 		position += (m_pos - vp_size / 2) * cam_zoom_offset * zoom.x
 		zoom /= camera_zoom_speed
 
-	if Input.is_action_just_released("map_unzoom") and zoom.x < zoom_limits["max"]:
+	if Input.is_action_just_released("map_unzoom") and zoom.x < zoom_limits["max"] and m_pos.y < 786:
 		position += (m_pos - vp_size / 2) * cam_unzoom_offset * zoom.x
 		zoom *= camera_zoom_speed
 

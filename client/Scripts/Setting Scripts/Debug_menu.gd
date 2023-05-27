@@ -22,13 +22,6 @@ var _unused
 #endregion
 
 
-func _ready() -> void:
-	
-	reload()
-
-	return
-
-
 func _process(_delta: float) -> void:
 	obj_fps_label.text = "FPS: " + str(Engine.get_frames_per_second())
 

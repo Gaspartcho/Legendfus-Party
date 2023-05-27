@@ -27,7 +27,10 @@ var _unused
 
 
 func _ready() -> void:
-	#Step 1: loading the first scene
+	#Step 1: initialising the basic settings
+	Global.offline_mode = offline_mode
+
+	#Step 2: loading the first scene
 	obj_game_version_label.text = Global.game_version
 	obj_debug_menu.obj_mouse_helper = obj_mouse_helper
 
@@ -37,13 +40,10 @@ func _ready() -> void:
 
 	_unused = begin_scene.connect("change_scene", self, "change_scene")
 	_unused = get_tree().connect("server_disconnected", self, "_on_server_disconnected")
-
-	if offline_mode:
-		change_scene("Main_Menu")
 	
 
-	#Step 2: doing others things
-	Global.offline_mode = offline_mode
+	#Step 3: finishing the launching
+	obj_debug_menu.reload()
 	
 	return
 

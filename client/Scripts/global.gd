@@ -18,3 +18,15 @@ var personal_id: int = 1
 var username: String = "CloneKnight"
 
 #endregion
+
+
+
+func close_game() -> void:
+    # Shuts down the game
+    if not offline_mode:
+        get_tree().network_peer.close_connection()
+        get_tree().network_peer = null
+
+    get_tree().quit()
+
+    return

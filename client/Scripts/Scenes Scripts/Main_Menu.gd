@@ -30,12 +30,7 @@ func _ready() -> void:
 
 
 func _on_Quit_button_pressed() -> void:
-	# Shuts down the game
-	if not Global.offline_mode:
-		get_tree().network_peer.close_connection()
-		get_tree().network_peer = null
-
-	get_tree().quit()
+	Global.close_game()
 
 	return
 

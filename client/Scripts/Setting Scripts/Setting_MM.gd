@@ -8,7 +8,7 @@ extends Control
 
 
 #scene objects
-
+onready var obj_disconnect_button: Button = $Disconnect_button
 
 
 #others
@@ -24,6 +24,9 @@ var _unused
 
 func _ready() -> void:
 	hide()
+
+	if Global.offline_mode:
+		obj_disconnect_button.disabled = true
 
 
 	return
