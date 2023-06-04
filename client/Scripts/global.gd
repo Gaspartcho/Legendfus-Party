@@ -9,7 +9,7 @@ extends Node
 
 const game_version: String = "LegendFus Party: Prototype 0.1 - Client"
 
-var offline_mode: bool = false
+var offline_mode: bool = true
 var server_adress: String = "None"
 var server_port: int = 0
 

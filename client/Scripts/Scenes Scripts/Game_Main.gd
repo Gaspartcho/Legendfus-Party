@@ -54,6 +54,7 @@ func change_scene(scene:String) -> void:
 	removed_scene.call_deferred("queue_free")
 	remove_child(removed_scene)
 	removed_scene.call_deferred("free")
+	yield(get_tree(), "idle_frame")
 
 	# Note pour plus tard: ajouter un écran de chargement ici
 

@@ -48,5 +48,5 @@ func reload() -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		obj_mouse_pos_label.text = "Mouse pos: " + str(event.position)
-		obj_mouse_real_pos_label.text = "Mouse Real Pos: " + str(obj_mouse_helper.get_local_mouse_position().round())
+		obj_mouse_real_pos_label.text = "Mouse Real Pos: " + str(obj_mouse_helper.get_global_mouse_position().round())
 	return

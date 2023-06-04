@@ -122,4 +122,5 @@ text = "Settings"
 [connection signal="pressed" from="Main_canvas/Create_game_button" to="." method="_on_Create_game_button_pressed"]
 [connection signal="pressed" from="Main_canvas/Quit_button" to="." method="_on_Quit_button_pressed"]
 [connection signal="pressed" from="Main_canvas/Setting_button" to="." method="_on_Setting_button_pressed"]
+[connection signal="pressed" from="Canvas_layer_100/Setting_menu/Quit_button" to="Canvas_layer_100/Setting_menu" method="_on_Quit_button_pressed"]
 [connection signal="pressed" from="Canvas_layer_100/Setting_menu/Return_button" to="Canvas_layer_100/Setting_menu" method="_on_Return_button_pressed"]

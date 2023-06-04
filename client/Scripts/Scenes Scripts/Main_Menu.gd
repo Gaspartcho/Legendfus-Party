@@ -35,8 +35,7 @@ func _on_Quit_button_pressed() -> void:
 	return
 
 func _on_Create_game_button_pressed() -> void:
-	print("Hello World")
-
+	emit_signal("change_scene", "Party")
 	return
 
 func _on_Setting_button_pressed() -> void:

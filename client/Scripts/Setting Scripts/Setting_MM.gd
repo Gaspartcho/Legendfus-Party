@@ -45,3 +45,7 @@ func _process(_delta) -> void:
 		visible = not visible
 	
 	return	
+
+
+func _on_Quit_button_pressed():
+	Global.close_game()

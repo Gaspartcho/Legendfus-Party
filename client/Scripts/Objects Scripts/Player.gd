@@ -49,10 +49,14 @@ func set_info(data: Dictionary) -> void:
 
 func move(target: Vector2) -> void:
 	# Vector2 s on world scale
-	_unused = obj_movement_tween.start()
-	is_moving = true
 	_unused = obj_movement_tween.interpolate_property(self, "position", position, target, position.distance_to(target) / movement_speed)
 
-func end_move() -> void:
+func travel(path: PoolVector2Array) -> void:
+	_unused = obj_movement_tween.start()
+	is_moving = true
+	for step in path:
+		move(step)
+		yield(obj_movement_tween, "tween_completed")
 	is_moving = false
+	
 	return

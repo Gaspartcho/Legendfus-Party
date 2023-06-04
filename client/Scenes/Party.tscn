@@ -67,16 +67,21 @@ margin_left = -430.0
 margin_top = -294.0
 script = ExtResource( 4 )
 
-[node name="ColorRect" type="ColorRect" parent="Canvas_layer_5/Minimap"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="ViewportContainer" type="ViewportContainer" parent="Canvas_layer_5/Minimap"]
+margin_right = 431.0
+margin_bottom = 295.0
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="Canvas_layer_5/Minimap/ViewportContainer"]
+size = Vector2( 1920, 1080 )
+handle_input_locally = false
+render_target_update_mode = 3
 
 [node name="Label" type="Label" parent="Canvas_layer_5/Minimap"]
-margin_left = 124.0
-margin_top = 76.0
-margin_right = 180.0
-margin_bottom = 90.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
+margin_left = 189.0
+margin_top = 125.0
+margin_right = 245.0
+margin_bottom = 139.0
 text = "Minimap"
 
 [node name="Action_bar" type="Control" parent="Canvas_layer_5"]
@@ -155,5 +160,6 @@ margin_right = 25.5
 margin_bottom = 63.0
 text = "Settings"
 
+[connection signal="console_log" from="Map" to="Canvas_layer_5/Console" method="console_log"]
 [connection signal="pressed" from="Canvas_layer_100/Setting_menu/Quit_button" to="Canvas_layer_100/Setting_menu" method="_on_Quit_button_pressed"]
 [connection signal="pressed" from="Canvas_layer_100/Setting_menu/Return_button" to="Canvas_layer_100/Setting_menu" method="_on_Return_button_pressed"]
