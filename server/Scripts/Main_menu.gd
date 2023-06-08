@@ -1,16 +1,15 @@
 extends Node
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+#region variables
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+#endregion
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+master func player_data_change(property: String, new_value):
+	var player_id: int = get_tree().get_rpc_sender_id()
+	Global.players[player_id][property] = new_value
+	print("Player {id} has changed {property} to {value}".format({"id": player_id, "property": property, "value": new_value}))
+
+	return

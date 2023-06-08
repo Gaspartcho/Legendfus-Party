@@ -25,9 +25,9 @@ var _unused
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("LegendFus Party: Server Side")
-	print("Version: " + str(Global.version))
+	print("Version: " + str(Global.game_version))
 
-	print("\n Initialising:")
+	print("\nInitialising:")
 
 	var peer = NetworkedMultiplayerENet.new()
 	var server_succes = peer.create_server(port, max_players)

@@ -47,7 +47,7 @@ func _on_Offline_button_pressed() -> void:
 	Global.offline_mode = true
 	Global.personal_id = 1
 	get_tree().network_peer = null
-	emit_signal("change_scene", "Main_Menu")
+	emit_signal("change_scene", "Main_menu")
 
 	return
 
@@ -69,7 +69,7 @@ func _on_connected_to_server() -> void:
 	Global.personal_id = get_tree().get_network_unique_id()
 	Global.offline_mode = false
 	rpc_id(0, "register_player", {"name": Global.username})
-	emit_signal("change_scene", "Main_Menu")
+	emit_signal("change_scene", "Main_menu")
 
 	return
 	

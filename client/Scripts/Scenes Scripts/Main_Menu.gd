@@ -53,6 +53,8 @@ func _on_Set_username_button_pressed():
 	if new_username != "":
 		Global.username = new_username
 		obj_username_label.text = new_username
+		if not Global.offline_mode:
+			rpc_id(0, "player_data_change", "name", new_username)
 	
 	return
 	
