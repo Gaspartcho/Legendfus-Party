@@ -25,15 +25,9 @@ var _unused
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	print("LegendFus Party: Server Side")
-	print("Version: " + Global.version)
+	print("Version: " + str(Global.version))
 
 	print("\n Initialising:")
-	local_ip = IP.get_local_addresses()[11]
-	print("Local IP: " + local_ip)
-
-	# set the global_ip variable here (later)
-	#global_ip = 
-	#print("Global IP: " + global_ip)
 
 	var peer = NetworkedMultiplayerENet.new()
 	var server_succes = peer.create_server(port, max_players)
@@ -42,6 +36,7 @@ func _ready():
 		print("Error Code: " + str(server_succes))
 		print("Exiting...")
 		get_tree().quit()
+
 	print("Server Created!")
 	print("Listening on port: " + str(port))
 

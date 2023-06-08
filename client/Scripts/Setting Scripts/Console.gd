@@ -36,12 +36,12 @@ func _process(_delta: float) -> void:
 		
 		else:
 			message = Global.username + ": " + message
-			console_log(message)
+			rpc("console_log", message)
 	
 	return	
 
 
-func console_log(message: String) -> void:
+remotesync func console_log(message: String) -> void:
 	var n_label: Label = Label.new()
 	n_label.autowrap = true
 	n_label.text = message

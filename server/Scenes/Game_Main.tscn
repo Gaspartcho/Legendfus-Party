@@ -1,12 +1,76 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Game_Main.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Room.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/Lobby.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/Connecter.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Party.gd" type="Script" id=4]
+[ext_resource path="res://Scripts/Main_menu.gd" type="Script" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node
+
+
+#region Variables
+
+var room_master: int
+
+
+#States: 0: Inactive; 1: Lobby (can join); 2: Game creation; 3: In game; 4: End results; 5: Closing
+var state: int = 0
+var max_players: int = 16
+#Room's User Given Name
+var title: String = \"Default\"
+var teams: Array = [1, 2, 3, 4]
+var id: int
+var players: Array = []
+
+#unused variable
+var _unused
+
+#endregion
+
+
+func initialise(r_master, r_name, r_max_players, r_teams):
+	room_master = r_master
+	title = r_name
+	max_players = r_max_players
+	teams = r_teams
+
+	pass # Replace with function body.
+
+
+func get_info() -> Dictionary:
+	if state != 1:
+		return {}
+	return {\"name\": title, \"max_players\": max_players, \"nb_players\": len(players)}
+	
+"
+
+[sub_resource type="PackedScene" id=2]
+_bundled = {
+"conn_count": 0,
+"conns": PoolIntArray(  ),
+"editable_instances": [  ],
+"names": PoolStringArray( "Room", "Node", "script" ),
+"node_count": 1,
+"node_paths": [  ],
+"nodes": PoolIntArray( -1, -1, 1, 0, -1, 1, 2, 0, 0 ),
+"variants": [ SubResource( 1 ) ],
+"version": 2
+}
 
 [node name="Game_Main" type="Node"]
 script = ExtResource( 1 )
-obj_room = ExtResource( 2 )
+obj_room = SubResource( 2 )
 
 [node name="Connecter" type="Node" parent="."]
 script = ExtResource( 3 )
+
+[node name="Party" type="Node" parent="."]
+script = ExtResource( 4 )
+
+[node name="Lobby" type="Node" parent="."]
+script = ExtResource( 2 )
+
+[node name="Main_menu" type="Node" parent="."]
+script = ExtResource( 5 )

@@ -22,20 +22,12 @@ margin_right = 287.0
 margin_bottom = 561.0
 text = "Join Game"
 
-[node name="Player_name_input" type="LineEdit" parent="Main_canvas"]
-margin_left = 46.0
-margin_top = 66.0
-margin_right = 209.0
-margin_bottom = 120.0
-max_length = 32
-expand_to_text_length = true
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-clear_button_enabled = true
-middle_mouse_paste_enabled = false
-deselect_on_focus_loss_enabled = false
-placeholder_text = "Username"
-caret_blink = true
+[node name="Set_username_button" type="Button" parent="Main_canvas"]
+margin_left = 222.0
+margin_top = 89.0
+margin_right = 324.0
+margin_bottom = 109.0
+text = "Set Username"
 
 [node name="Quit_button" type="Button" parent="Main_canvas"]
 margin_left = 945.0
@@ -51,12 +43,31 @@ margin_right = 1011.0
 margin_bottom = 35.0
 text = "Settings"
 
+[node name="Player_name_input" type="LineEdit" parent="Main_canvas"]
+margin_left = 46.0
+margin_top = 66.0
+margin_right = 209.0
+margin_bottom = 120.0
+max_length = 32
+expand_to_text_length = true
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+clear_button_enabled = true
+middle_mouse_paste_enabled = false
+deselect_on_focus_loss_enabled = false
+placeholder_text = "Username"
+caret_blink = true
+
 [node name="Game_name" type="Label" parent="Main_canvas"]
 margin_left = 393.0
 margin_top = 24.0
 margin_right = 500.0
 margin_bottom = 38.0
 text = "LegendFus Party"
+
+[node name="Username_label" type="Label" parent="Main_canvas"]
+margin_right = 40.0
+margin_bottom = 14.0
 
 [node name="Canvas_layer_100" type="CanvasLayer" parent="."]
 layer = 100
@@ -120,6 +131,7 @@ margin_bottom = 63.0
 text = "Settings"
 
 [connection signal="pressed" from="Main_canvas/Create_game_button" to="." method="_on_Create_game_button_pressed"]
+[connection signal="pressed" from="Main_canvas/Set_username_button" to="." method="_on_Set_username_button_pressed"]
 [connection signal="pressed" from="Main_canvas/Quit_button" to="." method="_on_Quit_button_pressed"]
 [connection signal="pressed" from="Main_canvas/Setting_button" to="." method="_on_Setting_button_pressed"]
 [connection signal="pressed" from="Canvas_layer_100/Setting_menu/Quit_button" to="Canvas_layer_100/Setting_menu" method="_on_Quit_button_pressed"]
