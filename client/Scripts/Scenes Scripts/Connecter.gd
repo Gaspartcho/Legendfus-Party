@@ -64,20 +64,21 @@ func connect_server(adress: String = default_server_adress, port: int = server_p
 	return
 
 
+func _on_connected_to_server() -> void:
+	print("Connected Success!")
+	Global.personal_id = get_tree().get_network_unique_id()
+	Global.offline_mode = false
+	rpc_id(0, "register_player", {"name": Global.username})
+	emit_signal("change_scene", "Main_Menu")
+
+	return
+	
+
 func _on_connection_failed() -> void:
 	print("Can\'t connect to server")
 	obj_server_adress_input.clear()
 	get_tree().network_peer = null
 
 	# shows an error message, end all connecting animations
-
-	return
-
-
-func _on_connected_to_server() -> void:
-	print("Connected Success!")
-	Global.personal_id = get_tree().get_network_unique_id()
-	Global.offline_mode = false
-	emit_signal("change_scene", "Main_Menu")
 
 	return

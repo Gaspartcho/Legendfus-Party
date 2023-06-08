@@ -13,8 +13,6 @@ export var max_rooms: int = 20
 var local_ip: String
 var global_ip: String
 
-var players: Dictionary = {}
-
 var rooms: Dictionary = {}
 
 
@@ -58,16 +56,9 @@ func exit_program() -> void:
 	get_tree().network_peer.close_connection()
 	get_tree().quit()
 
-
-master func register_player(data: Dictionary):
-	# Form of the data: {"name":name}
-	var id = get_tree().get_rpc_sender_id()
-	players[id] = data
-	print("A new player connected! (id: " + str(id) + ", number_of_players: " + str(len(players)) + ")")
-
 func _player_disconnected(id: int):
-	_unused = players.erase(id)
-	print("A player disconected! (id: " + str(id) + ", number_of_players: " + str(len(players)) + ")")
+	_unused = Global.players.erase(id)
+	print("A player disconected! (id: " + str(id) + ", number_of_players: " + str(len(Global.players)) + ")")
 
 
 master func create_room(title: String, nb_players: int, teams: PoolIntArray) -> void:
