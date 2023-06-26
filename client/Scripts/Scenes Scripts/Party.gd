@@ -8,6 +8,7 @@ signal change_scene (scene)
 
 #exports variables
 export var turn: String = "red"
+export var spawn_locations: Dictionary = {"red": PoolVector3Array(), "blue": PoolVector3Array(), "green": PoolVector3Array(), "yellow": PoolVector3Array()}
 
 
 #scene objects

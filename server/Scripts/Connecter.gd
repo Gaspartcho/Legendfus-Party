@@ -10,4 +10,4 @@ master func register_player(data: Dictionary):
 	var id = get_tree().get_rpc_sender_id()
 	Global.players[id] = data
 	print("A new player connected! (id: " + str(id) + ", number_of_players: " + str(len(Global.players)) + ")")
-	print(data["name"])
+

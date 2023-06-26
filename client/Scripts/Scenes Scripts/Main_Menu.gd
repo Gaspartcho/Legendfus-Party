@@ -39,7 +39,14 @@ func _on_Quit_button_pressed() -> void:
 	return
 
 func _on_Create_game_button_pressed() -> void:
-	emit_signal("change_scene", "Party")
+	if not Global.offline_mode:
+		rpc_id(1, "can_player_join_game")
+	return
+
+puppet func answer_can_join_game(answer: bool, message: String):
+	if answer:
+		emit_signal("change_scene", "Lobby")
+	print(message)
 	return
 
 func _on_Setting_button_pressed() -> void:

@@ -14,18 +14,11 @@ margin_right = 61.0
 margin_bottom = 588.0
 text = "Back"
 
-[node name="Room_ip_text" type="Label" parent="CanvasLayer"]
-margin_left = 15.0
-margin_top = 9.0
-margin_right = 69.0
-margin_bottom = 23.0
-text = "Room Ip: 0.0.0.0"
-
 [node name="Nb_players_text" type="Label" parent="CanvasLayer"]
 margin_left = 15.0
-margin_top = 47.0
-margin_right = 122.0
-margin_bottom = 61.0
+margin_top = 14.0
+margin_right = 138.0
+margin_bottom = 28.0
 text = "Number of users: 0"
 
 [node name="Start_button" type="Button" parent="CanvasLayer"]
@@ -35,6 +28,21 @@ margin_top = 527.0
 margin_right = -903.0
 margin_bottom = 547.0
 text = "Start Game"
+
+[node name="ToolButton" type="ToolButton" parent="CanvasLayer"]
+margin_left = 141.0
+margin_top = 188.0
+margin_right = 153.0
+margin_bottom = 210.0
+
+[node name="Label" type="Label" parent="CanvasLayer/ToolButton"]
+margin_right = 40.0
+margin_bottom = 14.0
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ToolButton"]
+margin_right = 32.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 32, 32 )
 
 [connection signal="pressed" from="CanvasLayer/Back_button" to="." method="_on_Back_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Start_button" to="." method="_on_Start_button_pressed"]
