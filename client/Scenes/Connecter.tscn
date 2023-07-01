@@ -12,6 +12,7 @@ margin_left = 186.0
 margin_top = 258.0
 margin_right = 374.0
 margin_bottom = 282.0
+text = "web3.deremble.name"
 clear_button_enabled = true
 placeholder_text = "Server Adress"
 

@@ -19,7 +19,7 @@ margin_left = 15.0
 margin_top = 14.0
 margin_right = 138.0
 margin_bottom = 28.0
-text = "Number of users: 0"
+text = "Number of players: 0"
 
 [node name="Start_button" type="Button" parent="CanvasLayer"]
 anchor_right = 1.0
